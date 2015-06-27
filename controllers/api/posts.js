@@ -1,5 +1,5 @@
 var Post = require("../../models/post");
-
+var websockets = require("../../websockets");
 var router = require("express").Router();
 
 
@@ -13,16 +13,15 @@ var router = require("express").Router();
     });
     
     router.post('/',function(req,res,next){
-        //console.log('post received') ;
+        //console.log(req.auth.username) ;
         //console.log('{username:',req.body.username,',body:',req.body.body,"}") ;
         
-        var post = new Post({
-            username:req.body.username,
-            body:req.body.body
-        });
+        var post = new Post({body:req.body.body});
+        post.username = req.auth.username;
        post.save(function(err,post){
            if(err){ return next(err);  }
-           res.json(201,post);
+           websockets.broadcast("new_post",post);
+           res.status(201).json(post);
        })
     });
     

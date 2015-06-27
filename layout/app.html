@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="/app.css">
     </head>
-    <body ng-app="app">
+    <body ng-app="app" ng-controller="ApplicationCtrl">
         <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,7 +25,9 @@
                 <li><a href="/#/register">Register</a></li>
                 <li><a href="/#/login">Login</a></li>
             </ul>
-           
+            <p ng-if='currentUser' class='navbar-text navbar-right'>
+                Signed in as {{currentUser.username}}
+            </p>
            
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
