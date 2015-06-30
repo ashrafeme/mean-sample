@@ -11,5 +11,9 @@ exports.config = {
   ],
   mochaOpts: {
     enableTimeouts: false
+  },
+  onPrepare:function(){
+    require("./server");
+     
   }
 }

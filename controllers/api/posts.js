@@ -13,8 +13,6 @@ var router = require("express").Router();
     });
     
     router.post('/',function(req,res,next){
-        //console.log(req.auth.username) ;
-        //console.log('{username:',req.body.username,',body:',req.body.body,"}") ;
         
         var post = new Post({body:req.body.body});
         post.username = req.auth.username;

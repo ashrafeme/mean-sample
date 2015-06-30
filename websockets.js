@@ -22,7 +22,7 @@ exports.broadcast=function(topic,data){
     
     clients.forEach(function (client) {
          if(client.readyState != client.OPEN){
-                console.error('Client state is ' + client.readyState);
+                //console.error('Client state is ' + client.readyState);
             }
             else{
                 client.send(json);
